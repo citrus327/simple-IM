@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "moduleResolution": "Node",
+    "module": "esnext",
+    "outDir": "./dist",
+    "removeComments": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@app/*": ["./app/*"],
+      "@config/*": ["./config/*"],
+      "@utils/*": ["./utils/*"],
+    },
+    "sourceMap": true,
+  },
+  "include": ["./app", "./config", "./utils"]
+}
