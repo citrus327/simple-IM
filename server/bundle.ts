@@ -2,7 +2,6 @@ import { rollup, watch, OutputOptions } from "rollup";
 import { babel } from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
-import postcss from "rollup-plugin-postcss";
 import typescript from "@rollup/plugin-typescript";
 import { defineConfig } from "rollup";
 import tsTransformPaths from "@zerollup/ts-transform-paths";
@@ -24,10 +23,6 @@ const plugins = [
   replace({
     preventAssignment: true,
     "process.env.NODE_ENV": JSON.stringify("production"),
-  }),
-  postcss({
-    plugins: [],
-    minimize: true,
   }),
   babel({
     babelHelpers: "bundled",
