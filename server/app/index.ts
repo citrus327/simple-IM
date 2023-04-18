@@ -25,7 +25,7 @@ const bootstrap = async () => {
     .use(session({}, app))
     .use(
       cors({
-        origin: "https://127.0.0.1:5174",
+        origin: "https://127.0.0.1:5173",
       })
     )
     .use(api.routes())

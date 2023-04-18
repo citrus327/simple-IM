@@ -8,4 +8,9 @@ export default defineConfig({
   server: {
     https: true,
   },
+  resolve: {
+    alias: {
+      "@components": "./components",
+    },
+  },
 });

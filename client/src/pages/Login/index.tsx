@@ -1,6 +1,18 @@
 import { useState } from "react";
+import { Button } from "@components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@components/ui/card";
+import { Input } from "@components/ui/input";
+import { Label } from "@components/ui/label";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,10 +29,8 @@ const Login = () => {
     })
       .then((response) => {
         if (response.ok) {
-          // User is authenticated, redirect to the chat page
-          // window.location.href = "/chat";
+          navigate("/chat");
         } else {
-          // Show an error message
           throw new Error("Login failed");
         }
       })
@@ -30,47 +40,40 @@ const Login = () => {
   };
 
   return (
-    <form
-      onSubmit={handleLogin}
-      className="rounded-lg border-current text-base border-2 flex flex-col items-center justify-center"
-    >
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(event) => setUsername(event.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-      />
-      <button type="submit">Login</button>
-      <button
-        type="button"
-        onClick={() => {
-          fetch("https://localhost:3000/api/data", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-          })
-            .then(async (response) => {
-              if (response.ok) {
-                // User is authenticated, redirect to the chat page
-                console.log(await response.json());
-              } else {
-                // Show an error message
-                throw new Error("Login failed");
-              }
-            })
-            .catch((error) => {
-              console.error(error);
-            });
-        }}
-      >
-        API
-      </button>
-    </form>
+    <div className="h-full w-full flex items-center justify-center">
+      <Card className="w-[350px]">
+        <CardHeader>
+          <CardTitle>Login</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form>
+            <div className="grid w-full items-center gap-4">
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="name">Username</Label>
+                <Input
+                  id="name"
+                  placeholder="Name of your project"
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="name">Password</Label>
+                <Input
+                  autoComplete="autoComplete"
+                  id="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
+          </form>
+        </CardContent>
+        <CardFooter className="flex justify-end">
+          <Button onClick={handleLogin}>Login</Button>
+        </CardFooter>
+      </Card>
+    </div>
   );
 };
 
