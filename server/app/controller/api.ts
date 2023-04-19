@@ -5,7 +5,9 @@ const api = new Router({
 });
 
 api
-  .post("/login", (ctx) => {
+  .post("/login", async (ctx, next) => {
+    await next();
+
     ctx.status = 200;
     const user = {
       username: ctx.request.body?.username,
@@ -20,8 +22,14 @@ api
     ctx.body = "<div>this is a html segment from server</div>";
     ctx.status = 200;
   })
-  .post("/data", authGuard, (ctx) => {
-    ctx.body = { data: "this is actual data" };
+  .get("/data", authGuard, (ctx) => {
+    console.log(ctx.session);
+    ctx.body = { data: "this is protected data", session: ctx.session };
+    ctx.status = 200;
+    return;
+  })
+  .get("/data/public", (ctx) => {
+    ctx.body = { data: "this is public data" };
     ctx.status = 200;
     return;
   });
