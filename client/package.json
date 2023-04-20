@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.0.1",
+    "@authing/guard-react18": "^5.1.7",
     "@radix-ui/react-label": "^2.0.1",
     "@radix-ui/react-select": "^1.2.1",
     "class-variance-authority": "^0.5.2",
