@@ -4,6 +4,7 @@ import { Login } from "./pages/Login";
 import { Guide } from "./pages/Guide";
 import { NotFound } from "./pages/NotFound";
 import Logout from "./pages/Login/Logout";
+import Callback from "./pages/Login/Callback";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,11 @@ const router = createBrowserRouter([
   {
     path: "/chat",
     Component: Chat,
+    ErrorBoundary: NotFound,
+  },
+  {
+    path: "/callback",
+    Component: Callback,
     ErrorBoundary: NotFound,
   },
   {

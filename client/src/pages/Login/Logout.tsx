@@ -1,15 +1,21 @@
-import { useGuard } from "@authing/guard-react18";
-import React from "react";
+import { getAuthingClient } from "../../vendor/authing";
+import { Button } from "@components/ui/button";
 
 export default function Logout() {
-  const guard = useGuard();
-
-  // 登出后的回调地址请在 Authing 控制台应用 -> 自建应用 -> 应用详情 -> 应用配置 -> 登出回调 URL 中配置
-  const onLogout = () => guard.logout();
-
   return (
     <div>
-      <button onClick={onLogout}>Logout</button>
+      <Button
+        onClick={() => {
+          const url = getAuthingClient().buildLogoutUrl({
+            redirectUri: "https://localhost:5173/login",
+          });
+          window.location.replace(url);
+          window.localStorage.setItem("access_token", "");
+          window.localStorage.setItem("id_token", "");
+        }}
+      >
+        Logout
+      </Button>
     </div>
   );
 }

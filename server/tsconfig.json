@@ -4,10 +4,8 @@
     "moduleResolution": "Node",
     "module": "esnext",
     "outDir": "./dist",
-    "removeComments": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
-    "jsx": "react",
     "baseUrl": "./",
     "paths": {
       "@app/*": ["./app/*"],
