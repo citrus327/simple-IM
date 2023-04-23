@@ -1,29 +1,20 @@
 import { Button } from "@components/ui/button";
-import { useGuard, User } from "@authing/guard-react18";
 import { useEffect, useState } from "react";
+import { request } from "../../request";
+import { useToast } from "@components/ui/use-toast";
+import { pause } from "@/utils/sys";
 
 const Chat = () => {
   const [userInfo, setUserInfo] = useState("");
-
-  const guard = useGuard();
-
-  useEffect(() => {
-    guard.trackSession().then((res: User | null) => {
-      setUserInfo(JSON.stringify(res, null, 2));
-    });
-  }, []);
-
+  const { toast } = useToast();
   const fetchProtectedData = async () => {
-    const res = await fetch("https://localhost:3000/api/data");
-    const data = await res.json();
+    const res = await request.get("/data/private");
 
-    console.log(data);
+    console.log(res);
   };
   const fetchPublicData = async () => {
-    const res = await fetch("https://localhost:3000/api/data/public");
-    const data = await res.json();
-
-    console.log(data);
+    const res = await request.get("/data/public");
+    console.log(res);
   };
   return (
     <div>
@@ -47,6 +38,21 @@ const Chat = () => {
         }}
       >
         Public
+      </Button>
+
+      <Button
+        onClick={() => {
+          const $t = toast({
+            variant: "primary",
+            title: "Login Successfully!",
+            description: "Redirecting to main page in 3...",
+          });
+          pause().then(() => {
+            $t.dismiss();
+          });
+        }}
+      >
+        123123
       </Button>
     </div>
   );

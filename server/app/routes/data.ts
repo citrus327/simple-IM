@@ -8,6 +8,7 @@ data.get("/public", (req, res, next) => {
       message: "this is publicData",
     },
   });
+  next();
 });
 
 data.get("/private", (req, res, next) => {
@@ -16,6 +17,7 @@ data.get("/private", (req, res, next) => {
       message: "this is private data",
     },
   });
+  next();
 });
 
 export { data };
