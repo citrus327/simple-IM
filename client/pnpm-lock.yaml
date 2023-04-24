@@ -4,6 +4,9 @@ dependencies:
   '@radix-ui/react-label':
     specifier: ^2.0.1
     version: registry.npmmirror.com/@radix-ui/react-label@2.0.1(react-dom@18.2.0)(react@18.2.0)
+  '@radix-ui/react-progress':
+    specifier: ^1.0.2
+    version: registry.npmmirror.com/@radix-ui/react-progress@1.0.2(react-dom@18.2.0)(react@18.2.0)
   '@radix-ui/react-select':
     specifier: ^1.2.1
     version: registry.npmmirror.com/@radix-ui/react-select@1.2.1(@types/react@18.0.28)(react-dom@18.2.0)(react@18.2.0)
@@ -656,6 +659,22 @@ packages:
     dependencies:
       '@babel/runtime': registry.npmmirror.com/@babel/runtime@7.21.0
       '@radix-ui/react-slot': registry.npmmirror.com/@radix-ui/react-slot@1.0.1(react@18.2.0)
+      react: registry.npmmirror.com/react@18.2.0
+      react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+    dev: false
+
+  registry.npmmirror.com/@radix-ui/react-progress@1.0.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-c16RVM43ct2koRcMmPw4b47JWFNs89qe5p4Um9dwoPs0yi+d7It1MJ35EpsX+93o31Mqdwe4vQyu0SrHrygdCg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@radix-ui/react-progress/-/react-progress-1.0.2.tgz}
+    id: registry.npmmirror.com/@radix-ui/react-progress/1.0.2
+    name: '@radix-ui/react-progress'
+    version: 1.0.2
+    peerDependencies:
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime@7.21.0
+      '@radix-ui/react-context': registry.npmmirror.com/@radix-ui/react-context@1.0.0(react@18.2.0)
+      '@radix-ui/react-primitive': registry.npmmirror.com/@radix-ui/react-primitive@1.0.2(react-dom@18.2.0)(react@18.2.0)
       react: registry.npmmirror.com/react@18.2.0
       react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
     dev: false

@@ -14,7 +14,7 @@ app.get("/", (req, res, next) => {
 });
 
 app.use("/auth", authGuard, auth);
-app.use("/data", authGuard, data);
+app.use("/data", data);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

@@ -1,30 +1,18 @@
 import { Button } from "@components/ui/button";
-import { useEffect, useState } from "react";
 import { request } from "../../request";
-import { useToast } from "@components/ui/use-toast";
 import { pause } from "@/utils/sys";
+import { toast } from "@components/ui/use-toast";
 
 const Chat = () => {
-  const [userInfo, setUserInfo] = useState("");
-  const { toast } = useToast();
   const fetchProtectedData = async () => {
     const res = await request.get("/data/private");
-
-    console.log(res);
   };
   const fetchPublicData = async () => {
     const res = await request.get("/data/public");
-    console.log(res);
   };
+
   return (
     <div>
-      {userInfo && (
-        <div>
-          <div>用户信息：</div>
-          <textarea cols={100} rows={30} defaultValue={userInfo}></textarea>
-        </div>
-      )}
-
       <Button
         onClick={() => {
           fetchProtectedData();
@@ -39,11 +27,10 @@ const Chat = () => {
       >
         Public
       </Button>
-
       <Button
         onClick={() => {
           const $t = toast({
-            variant: "primary",
+            variant: "secondary",
             title: "Login Successfully!",
             description: "Redirecting to main page in 3...",
           });

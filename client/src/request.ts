@@ -1,5 +1,7 @@
 import axios, { AxiosResponse } from "axios";
-import { clearAuthInfo, doLogout, goLogin } from "./services/auth";
+import { doLogout } from "./services/auth";
+import { toast } from "@components/ui/use-toast";
+import { pause } from "./utils/sys";
 
 const instance = axios.create({
   baseURL: "http://localhost:3000",
@@ -28,8 +30,15 @@ instance.interceptors.response.use(
   (error) => {
     if (error.response.status === 401) {
       console.log("Authentication error", error.message);
-      clearAuthInfo();
-      goLogin();
+      const $t = toast({
+        variant: "destructive",
+        title: "Session Expired!",
+        description: "Redirecting to Login Page in 3...",
+      });
+      pause().then(() => {
+        $t.dismiss();
+        doLogout();
+      });
     }
 
     return Promise.reject(error);
